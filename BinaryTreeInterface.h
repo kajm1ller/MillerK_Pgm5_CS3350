@@ -1,7 +1,7 @@
 #pragma once
-#ifdef BINARY_TREE_INTERFACE_H
+#ifndef BINARY_TREE_INTERFACE_H
 
-template <typedef T>
+template <typename T>
 class BinaryTreeInterface
 {
 public:

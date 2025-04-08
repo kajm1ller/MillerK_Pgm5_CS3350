@@ -19,7 +19,6 @@ public:
 	void setRight(BinaryNode<T>*); // mutator setting pRight
 	static int getNodeCount(); // accessor for the static node count
 	static int nodeCount; // static members are available to all objects
-	friend BinaryNode<T> operator=(BinaryNode<T>&) { data = this->data; };
 private:
 	T data; // node data
 	BinaryNode<T>* pLeft; // pointer left subtree

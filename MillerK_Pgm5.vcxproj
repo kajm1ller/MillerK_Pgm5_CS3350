@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryNode.cpp" />
-    <ClCompile Include="BinaryTreeInterface.cpp" />
     <ClCompile Include="LinkedBTree.cpp" />
     <ClCompile Include="MillerK_Pgm5.cpp" />
   </ItemGroup>
