@@ -29,6 +29,9 @@ public:
 	bool add(const T& x) { return balancedAdd(pRoot, new BinaryNode<T>(x)); };
 	void clear() { destroyTree(pRoot); pRoot = nullptr; };
 	bool contains(const T& x) const;
+	void displayTree(BinaryNode<T> rootNode, ) const {
+
+	};
 	
 	// more public interface functions omitted
 };
