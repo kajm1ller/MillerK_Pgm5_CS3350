@@ -4,52 +4,73 @@ template <typedef T>
 class BinaryNode
 {
 public:
-	BinaryNode() 
+	BinaryNode() // default constructor
 	{
 		data();
 		pLeft = nullptr;
 		pRight = nullptr;
 		nodeCount++;
-	}; // default constructor
+	}; 
 
-	BinaryNode(const T& x) 
+	BinaryNode(const T& x) // overloaded constructor
 	{
 		data = x;
 		pLeft = nullptr;
 		pRight = nullptr;
-	}; // overloaded constructor
+	}; 
 
-	BinaryNode(const T& x, BinaryNode<T>* y)  // overloaded constructor accepting item data, andBinaryNode<T>*, // pointer to left subtree
+	BinaryNode(const T& x, BinaryNode<T>* y)  // overloaded constructor accepting item data, andBinaryNode<T>*
 	{
 		data = x;
-		pLeft = y->pLeft;
-		pRight = y->pRight;
-	}; // pointer to right subtree
+		pLeft = y->pLeft;    // pointer to left subtree
+		pRight = y->pRight;  // pointer to right subtree
+	};
 	
 	~BinaryNode<T>() { nodeCount--; } // destructor
 	
-	T getItem()const { return data; }; // accessor returning data
+	T getItem()const // accessor returning data
+	{ 
+		return data; 
+	}; 
 	
-	void setItem(const T& x) { data = this->data; }; // mutator setting data
+	void setItem(const T& x) // mutator setting data
+	{ 
+		data = this->data; 
+	}; 
 	
 	bool isLeaf() const // true if leaf node, false otherwise
 	{
 		if ((pLeft == nullptr) && (pRight == nullptr) {
 			return true;
 		}
+
 		return false;
-	
 	}; 
 
-	BinaryNode<T>* getLeft()const { return pLeft;  }; // accessor returning pLeft pointer
+	BinaryNode<T>* getLeft()const // accessor returning pLeft pointer
+	{ 
+		return pLeft;  
+	}; 
 
-	BinaryNode<T>* getRight()const{ return pRight; }; // accessor returning pRight pointer
+	BinaryNode<T>* getRight()const // accessor returning pRight pointer
+	{ 
+		return pRight; 
+	}; 
 
-	void setLeft(BinaryNode<T>* x){ pLeft = x->pLeft}; // mutator setting pLeft
+	void setLeft(BinaryNode<T>* x) // mutator setting pLeft
+	{ 
+		pLeft = x->pLeft
+	}; 
 
-	void setRight(BinaryNode<T>* x){ pRight = x->pRight}; // mutator setting pRight
+	void setRight(BinaryNode<T>* x) // mutator setting pRight
+	{ 
+		pRight = x->pRight
+	}; 
 
-	static int getNodeCount() { return nodeCount; }; // accessor for the static node count
+	static int getNodeCount() // accessor for the static node count
+	{ 
+		return nodeCount; 
+	}; 
 
 	static int nodeCount; // static members are available to all objects
 private:
