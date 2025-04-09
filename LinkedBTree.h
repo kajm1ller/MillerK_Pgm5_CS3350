@@ -45,6 +45,7 @@ public:
 	bool add(const T& newData) override;
 	void clear() override;
 	bool contains(const T& anEntry) const override;
+	void displayTree() const;
     
     // Traversal methods
     void preorderTraverse(typename BinaryTreeInterface<T>::FunctionType visit) const override;
@@ -54,6 +55,7 @@ public:
     // Additional methods
     bool replace(const T& item, const T& replacementItem);
     void displayVisualTree(BinaryNode<T>* subTreePtr, int totalSpaces) const;
+	BinaryNode<T>* getRootNode() const { return pRoot; } // Added to get the root node
 };
 
 template <typename T>
@@ -312,7 +314,13 @@ inline int LinkedBTree<T>::getHeight() const
 template<typename T>
 inline int LinkedBTree<T>::getNumberOfNodes() const
 {
-	return 0;
+	if (pRoot == nullptr) {
+		return 0;
+	}
+	else {
+		return pRoot->getNodeCount();
+	}
+	
 }
 
 template<typename T>
@@ -330,7 +338,20 @@ inline void LinkedBTree<T>::setRootData(const T& newData)
 template<typename T>
 inline bool LinkedBTree<T>::add(const T& newData)
 {
-	return false;
+	if (pRoot == nullptr) {
+		pRoot = new BinaryNode<T>(newData);
+	}
+	else {
+		BinaryNode<T>* newNodePtr = new BinaryNode<T>(newData);
+		pRoot = balancedAdd(pRoot, newNodePtr);
+	}
+	return true;
+}
+
+template <typename T>
+void LinkedBTree<T>::displayTree() const
+{
+	displayVisualTree(pRoot, 0);
 }
 
 #endif // LINKED_BTREE_H
