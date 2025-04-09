@@ -29,10 +29,10 @@
     <ClInclude Include="BinaryNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryTreeInterface.h">
+    <ClInclude Include="LinkedBTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedBTree.h">
+    <ClInclude Include="BinaryTreeInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,20 +1,23 @@
 #include "BinaryNode.h"
 #include <string>
+
+
+
 template <typename T>
 BinaryNode<T>::BinaryNode() 
 { 
-	this->nodeCount = 0;
-	this->pLeft = nullptr;
-	this->pRight = nullptr;
+	nodeCount = 0;
+	pLeft = nullptr;
+	pRight = nullptr;
 	nodeCount++;
 }
 
 template <typename T>
 BinaryNode<T>::BinaryNode(const T& x) 
 { 
-	this->data = x;
-	this->pLeft = nullptr;
-	this->pRight = nullptr;
+	data = x;
+	pLeft = nullptr;
+	pRight = nullptr;
 	nodeCount++;
 }
 
@@ -85,6 +88,7 @@ int BinaryNode<T>::getNodeCount()
 }
 
 template class BinaryNode<std::string>;
-// Add this definition outside the class and template implementation
+
+
 template <typename T>
 int BinaryNode<T>::nodeCount = 0;

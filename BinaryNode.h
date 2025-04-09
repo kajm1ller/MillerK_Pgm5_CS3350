@@ -1,3 +1,5 @@
+#include <ostream>
+
 #pragma once
 #ifndef BINARYNODE_H  
 #define BINARYNODE_H 
@@ -6,9 +8,14 @@ template <typename T>
 class BinaryNode
 {
 public:
+	friend std::ostream& operator<<(std::ostream& os, const BinaryNode<T>& node) {
+		os << node.data;
+		return os;
+	};
 	BinaryNode(); // default constructor
 	BinaryNode(const T&); // overloaded constructor
 	BinaryNode(const T& x, BinaryNode<T>* y); // overloaded constructor accepting item data, and a pointer to another BinaryNode
+	BinaryNode(const BinaryNode<T>& other); // copy constructor
 	~BinaryNode<T>(); // destructor
 	T getItem()const; // accessor returning data
 	void setItem(const T&); // mutator setting data
@@ -24,5 +31,16 @@ private:
 	BinaryNode<T>* pLeft; // pointer to left subtree
 	BinaryNode<T>* pRight; // pointer to right subtree
 };
+
+template <typename T>
+BinaryNode<T>::BinaryNode(const BinaryNode<T>& other)
+{
+	// Copy each relevant field
+	data = other.data;
+	pLeft = other.pLeft;
+	pRight = other.pRight;
+	// Increment nodeCount appropriately (static member)
+	nodeCount++;
+}
 
 #endif // BINARYNODE_H

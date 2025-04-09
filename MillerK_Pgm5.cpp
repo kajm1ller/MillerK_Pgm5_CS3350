@@ -1,13 +1,16 @@
 #include <iostream>
 #include "BinaryNode.h"
 #include "LinkedBTree.h"
-#include "BinaryTreeInterface.h"
+#include <string>
+
 
 int main() {
 
-	std::cout << "Hello!";
+	LinkedBTree<std::string> tree("Hello!");
+	tree.add("World");
+	std::cout << tree;
 
-
+	
 
 
 
