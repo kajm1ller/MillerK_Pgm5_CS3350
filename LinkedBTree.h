@@ -54,7 +54,6 @@ public:
     // Additional methods
     bool replace(const T& item, const T& replacementItem);
     void displayVisualTree(BinaryNode<T>* subTreePtr, int totalSpaces) const;
-    void displayTree() const;
 };
 
 template <typename T>
@@ -147,13 +146,23 @@ inline bool LinkedBTree<T>::replace(const T& item, const T& replacementItem)
 template<typename T>
 inline void LinkedBTree<T>::displayVisualTree(BinaryNode<T>* subTreePtr, int totalSpaces) const
 {
-	std::cout << pRoot->getItem() << std::endl;
+	if (subTreePtr != nullptr) {
+		displayVisualTree(subTreePtr->getRight(), totalSpaces++);
+		for (int i = 0; i < totalSpaces; ++i) {
+			std::cout << "";
+		}
+		std::cout << subTreePtr->getItem();
+		displayVisualTree(subTreePtr->getLeft(), totalSpaces++);
+	}
+	else {
+		for (int i = 0; i < totalSpaces; ++i) {
+			std::cout << "";
+			std::cout << "-----";
+		}
+	}
 }
 
-template<typename T>
-inline void LinkedBTree<T>::displayTree() const
-{
-}
+
 
 
 template <typename T>
