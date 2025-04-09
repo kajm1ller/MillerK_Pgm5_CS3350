@@ -21,7 +21,7 @@ public:
 	static int nodeCount; // static members are available to all objects
 private:
 	T data; // node data
-	BinaryNode<T>* pLeft; // pointer left subtree
+	BinaryNode<T>* pLeft; // pointer to left subtree
 	BinaryNode<T>* pRight; // pointer to right subtree
 };
 

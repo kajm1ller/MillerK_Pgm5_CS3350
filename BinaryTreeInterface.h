@@ -1,5 +1,6 @@
 #pragma once
 #ifndef BINARY_TREE_INTERFACE_H
+#define BINARY_TREE_INTERFACE_H
 
 template <typename T>
 class BinaryTreeInterface

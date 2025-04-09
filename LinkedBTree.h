@@ -1,11 +1,18 @@
 #include "BinaryNode.h"
 #include "BinaryTreeInterface.h"
+#include <iostream>
 
 #pragma once
 #ifndef LINKED_B_TREE_H
+#define LINKED_B_TREE_H
 template <typename T>
 class LinkedBTree : public BinaryTreeInterface<T>
 {
+public:
+
+	LinkedBTree();
+	LinkedBTree(const T& rootItem);
+	
 private:
 	BinaryNode<T>* pRoot;
 
@@ -14,13 +21,8 @@ protected:
 	int getHeightHelper(BinaryNode<T>* x) const;
 	BinaryNode<T>* balancedAdd(BinaryNode<T>* x, BinaryNode<T>* y);
 	void destroyTree(BinaryNode<T>* x);
-	void inorder(FunctionType, BinaryNode<T>* x) const;
+	void inorder(typename BinaryTreeInterface<T>::FunctionType, BinaryNode<T>* nodePtr) const;
 	BinaryNode<T>* findNode(BinaryNode<T>* x, const T& y, bool& z)const;
-	// more protected helper functions omitted
-public:
-	void inorderTraverse(FunctionType) const;
-	LinkedBTree() { pRoot = nullptr; };
-	LinkedBTree()(const T& rootItem) { pRoot = new BinaryNode<T>(rootItem); };
 	bool isEmpty() const { return pRoot == nullptr; };
 	int getHeight() const { return getHeightHelper(pRoot); };
 	int getNumberOfNodes() const { return BinaryNode<T>::getNodeCount(); };
@@ -29,12 +31,10 @@ public:
 	bool add(const T& x) { return balancedAdd(pRoot, new BinaryNode<T>(x)); };
 	void clear() { destroyTree(pRoot); pRoot = nullptr; };
 	bool contains(const T& x) const;
-	void displayTree(BinaryNode<T> rootNode, ) const {
-
-	};
 	
-	// more public interface functions omitted
 };
+
+
 
 
 #endif LINKED_B_TREE_H

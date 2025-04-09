@@ -4,6 +4,18 @@
 #include <string>
 
 template <typename T>
+LinkedBTree<T>::LinkedBTree() 
+{
+	pRoot = nullptr;
+}
+
+template <typename T>
+LinkedBTree<T>::LinkedBTree(const T& rootItem)
+{
+	pRoot->setItem(rootItem);
+}
+
+template <typename T>
 int LinkedBTree<T>::getHeightHelper(BinaryNode<T>* x) const 
 {
 	if (x == nullptr) {
@@ -18,19 +30,31 @@ int LinkedBTree<T>::getHeightHelper(BinaryNode<T>* x) const
 
 template<typename T>
 BinaryNode<T>* LinkedBTree<T>::balancedAdd(BinaryNode<T>* x, BinaryNode<T>* y)
-{ 
-	if (x == nullptr) 
-	{
-		return nullptr;
-    }
-
-	else
-	{
-		BinaryNode<T>* newNode = new BinaryNode<T>(x->getItem());
-		newNode->setLeft(balancedAdd(x->getLeft(), x));
-		newNode->setRight(balancedAdd(x->getRight(), x));
-		return newNode;
+{
+	if (x == nullptr) {
+		return y;
 	}
+	else if (y == nullptr) {
+		return x;
+	}
+	else {
+		if (x->getLeft() == nullptr) {
+			x->setLeft(y);
+		}
+		else if (x->getRight() == nullptr) {
+			x->setRight(y);
+		}
+		else {
+			if (getHeightHelper(x->getLeft()) <= getHeightHelper(x->getRight())) {
+				x->setLeft(balancedAdd(x->getLeft(), y));
+			}
+			else {
+				x->setRight(balancedAdd(x->getRight(), y));
+			}
+		}
+		return x;
+	}
+
 }
 
 template<typename T>
@@ -47,9 +71,15 @@ void LinkedBTree<T>::destroyTree(BinaryNode<T>* x)
 }
 
 template<typename T>
-void LinkedBTree<T>::inorder(FunctionType, BinaryNode<T>*) const // literally what the fuck does FunctionType mean
+void LinkedBTree<T>::inorder(typename BinaryTreeInterface<T>::FunctionType visit, BinaryNode<T>* nodePtr) const 
 {
+	if (nodePtr != nullptr)
+	{
+		inorder(visit, nodePtr->getLeft());
 
+		T item = nodePtr->getItem();
+		visit(item);
+	}
 }
 
 template<typename T>
@@ -59,16 +89,18 @@ BinaryNode<T>* LinkedBTree<T>::findNode(BinaryNode<T>*, const T&, bool&) const
 }
 
 template<typename T>
-void LinkedBTree<T>::inorderTraverse(FunctionType) const // Refer to line 50
-{
-}
-
-template<typename T>
 bool LinkedBTree<T>::contains(const T& x) const
 {
-	return false;
+	if (pRoot == nullptr) {
+		return false;
+	}
+	else {
+		bool found = false;
+		findNode(pRoot, x, found);
+		return found;
+	}
 }
 
-
+template class LinkedBTree<BinaryNode<int>>;
 template class LinkedBTree<BinaryNode<std::string>>;
 
