@@ -4,6 +4,18 @@
 #include <string>
 #include <fstream>
 
+// Kaj Miller
+// CS3350
+// 04/04/2025
+// Dr. Jadwiga Carlson
+// This program is meant to showcase the LinkedBTree class that I've designed.
+// Reflection: 
+// This program was a bit tough at first, but I think thats just because I didn't know how search trees work.
+// Now that I have a better understanding of them though, I feel pretty confident. It was also fun to experiment with exception cases.            
+// I also didn't know if we were supposed to format our functions with explicit instantiation, as the project guide lines just said to            
+// include our header files. However, said functions declared in the header file don't seem to affect compile time or the speed of the program itself, so I'm happy.           
+
+
 template <typename T>
 void displayNode(T& item)
 {

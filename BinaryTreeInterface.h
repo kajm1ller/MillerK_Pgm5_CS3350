@@ -18,11 +18,8 @@ public:
 
 	// Check whether a given entry is contained in the binary tree
 	virtual bool contains(const T&) const = 0;
-
-	// Traverse tree in one of the three traversal methods (preorder, inorder, postorder)
-	// Calls the function visit once for each node
-	// visit is a client-defined function that operates on or with the data
-	// in each visited node
+	
+	// traversal methods
 	virtual void preorderTraverse(FunctionType) const = 0;
 	virtual void inorderTraverse(FunctionType) const = 0;
 	virtual void postorderTraverse(FunctionType) const = 0;
